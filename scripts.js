@@ -1,5 +1,3 @@
-//Use this file to implement Part One of your project
-
 // Objects exercises
 
 var animal = {};
@@ -80,4 +78,38 @@ animals.push(quackers2,quackers3);
 
 // Check the length of the animals array; should be 4
 console.log(animals.length);
+
+// Nested Data exercise
+
+// Create a friendslist and use animals array to add two usernames
+var friends = [];
+friends.push(animals[0].username);
+friends.push(animals[1].username);
+console.log(friends);
+
+// Create relationships object
+var relationships = {};
+
+// Add your friends data structure to relationships array
+relationships["friends"] = friends;
+
+// Find the "length" (number of properties) in the object
+var count = 0;
+for (var key in relationships) {
+  count++;
+}
+console.log(count);
+
+// Create matches array and add to relationships object
+var matches = [];
+relationships.matches = matches;
+
+// Add one username to matches, using the relationships object
+relationships.matches.push(animals[0].username);
+
+// Loop through your animals collection, adding relationships object to each animal object
+for(var i = 0; i < animals.length; i++) {
+  animals[i].relationships = relationships;
+}
+
 
