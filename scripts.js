@@ -105,11 +105,48 @@ var matches = [];
 relationships.matches = matches;
 
 // Add one username to matches, using the relationships object
-relationships.matches.push(animals[0].username);
+relationships.matches.push(animals[2].username); // returns "Daisy"
 
 // Loop through your animals collection, adding relationships object to each animal object
 for(var i = 0; i < animals.length; i++) {
   animals[i].relationships = relationships;
 }
 
+function AnimalTestUser(username){
+  var args = arguments.length;
+  if(args > 1)
+  {
+    var otherArgs = [];
+    for(var i = 1; i < arguments.length; i++)
+    {
+        otherArgs[i-1] = arguments[i];
+    }
+  return {
+    "otherArgs" : otherArgs,
+    "username" : username
+    };
+  }
+  else
+  {
+  return {
+    "username" : username };
+  }
+}
 
+function AnimalCreator (username, species, tagline, noises) {
+  return {
+    "username" : username,
+    "species" : species,
+    "tagline" : tagline,
+    "noises" : noises,
+    "friends" : []
+  };
+}
+
+var man = AnimalCreator ("bob", "man", "I am Bob", ["zzz", "boo", "man noise"]);
+var woman = AnimalCreator ("doreen", "woman", "I am Doreen", ["hi", "cool", "woman noise"]);
+
+function addFriend (animal1, animal2) {
+    return (animal1.friends.push(animal2),
+      animal2.friends.push(animal1));
+}
